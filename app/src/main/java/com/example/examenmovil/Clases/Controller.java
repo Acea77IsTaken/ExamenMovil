@@ -1,5 +1,7 @@
 package com.example.examenmovil.Clases;
 
+import android.os.Build;
+
 import java.util.Comparator;
 import java.util.ArrayList;
 public class Controller {
@@ -27,7 +29,7 @@ public class Controller {
 
     public void BuscarMarcaModelo() {
         System.out.println("Introduzca la marca o modelo que desea buscar");
-        String modeloomarca = ;
+        String modeloomarca = "";
 
         for(Dispositivo dispositivo : this.dispositivos) {
             if (dispositivo.marca.equalsIgnoreCase(modeloomarca) || dispositivo.modelo.equalsIgnoreCase(modeloomarca)) {
@@ -40,8 +42,10 @@ public class Controller {
     public void ListaOrdenada() {
         this.dispositivos.sort(Comparator.comparing(Dispositivo::getStock));
 
-        for(Dispositivo dispositivo : this.dispositivos.reversed()) {
-            System.out.println(dispositivo.marca + " Stock: " + dispositivo.stock);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+            for(Dispositivo dispositivo : this.dispositivos.reversed()) {
+                System.out.println(dispositivo.marca + " Stock: " + dispositivo.stock);
+            }
         }
 
     }
