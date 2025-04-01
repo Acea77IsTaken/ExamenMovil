@@ -28,10 +28,10 @@ import java.util.ArrayList;
         return resultado;
     }
 
-    public String BuscarMarcaModelo(String modeloomarca) {
+    public String BuscarMarcaModelo(String modelo, String marca) {
         String resultado = "";
         for(Dispositivo dispositivo : this.dispositivos) {
-            if (dispositivo.marca.equalsIgnoreCase(modeloomarca) || dispositivo.modelo.equalsIgnoreCase(modeloomarca)) {
+            if (dispositivo.marca.equalsIgnoreCase(marca) || dispositivo.modelo.equalsIgnoreCase(modelo)) {
                 resultado += "Precio: " + dispositivo.CalcularPrecio() + "\n";
             }
         }

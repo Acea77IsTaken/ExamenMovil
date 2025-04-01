@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
         Button AgregarLaptop = findViewById(R.id.BtnLaptop);
         Button mostrarInfo = findViewById(R.id.MostrarInfo);
+        Button buscarmain = findViewById(R.id.BtnBuscarMain);
+        Button mostrarstock = findViewById(R.id.BtnMostrarStock);
 
         List<Dispositivo> Dispositivos = new ArrayList<>();
         Controller controller = SingletonController.getinstance();
@@ -54,6 +56,24 @@ public class MainActivity extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setTitle("informacion")
                         .setMessage(controller.PrecioDeTodo())
+                        .setPositiveButton("ok",null);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+        buscarmain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, BusquedaModelo.class);
+                startActivity(intent);
+            }
+        });
+        mostrarstock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("informacion")
+                        .setMessage(controller.ListaOrdenada())
                         .setPositiveButton("ok",null);
                 AlertDialog dialog = builder.create();
                 dialog.show();

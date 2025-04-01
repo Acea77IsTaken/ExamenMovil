@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ExamenMovil"
         tools:targetApi="31">
         <activity
+            android:name=".BusquedaModelo"
+            android:exported="false" />
+        <activity
             android:name=".AgregarLaptop"
             android:exported="false" />
         <activity
