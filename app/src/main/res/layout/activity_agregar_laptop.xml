@@ -81,18 +81,18 @@
                 android:id="@+id/textView15"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pulgadas:"
-                android:textSize="24dp"
-                android:padding="15dp"/>
+                android:padding="15dp"
+                android:text="Precio base:"
+                android:textSize="24dp" />
 
             <EditText
-                android:id="@+id/EditPulgadas"
+                android:id="@+id/EditPrecioBase"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="text"
-                android:text="Pulgadas"
-                android:padding="15dp"/>
+                android:padding="15dp"
+                android:text="Precio Base" />
 
             <TextView
                 android:id="@+id/textView16"
@@ -163,11 +163,12 @@
                 android:padding="15dp"/>
 
             <Button
+                android:id="@+id/BtbAgregarLap"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="15dp"
                 android:layout_margin="10dp"
-                android:text="Agregar Laptop"/>
+                android:padding="15dp"
+                android:text="Agregar Laptop" />
 
 
         </LinearLayout>

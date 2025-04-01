@@ -2,9 +2,10 @@ package com.example.examenmovil.Clases;
 
 import android.os.Build;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.ArrayList;
-public class Controller {
+ public class Controller{
 
     public ArrayList<Dispositivo> dispositivos;
 
@@ -16,38 +17,36 @@ public class Controller {
         this.dispositivos.add(new Laptop((double)200.0F, 12, "uno bien pro", "tyzen", "elMejor", (double)1000.0F, 2014, 220));
         this.dispositivos.add(new Tablet((double)10.5F, true, "SamSings", "unoNormal", (double)1000.0F, 2014, 20));
         this.dispositivos.add(new Smartphone((double)12.5F, 3, "WaoWey", "Asombroso", (double)1000.0F, 2014, 250));
-        this.dispositivos.add(new TabletRefurbished((double)10.5F, true, "YouPad", "unoChafa", (double)1000.0F, 2014, 1, "C"));
     }
 
-    public void PrecioDeTodo() {
+    public String PrecioDeTodo() {
+        String resultado = "";
         for(Dispositivo dispositivo : this.dispositivos) {
             String var10001 = dispositivo.marca;
-            System.out.println(var10001 + ": " + dispositivo.CalcularPrecio());
+            resultado += var10001 + ": " + dispositivo.CalcularPrecio() + "\n";
         }
-
+        return resultado;
     }
 
-    public void BuscarMarcaModelo() {
-        System.out.println("Introduzca la marca o modelo que desea buscar");
-        String modeloomarca = "";
-
+    public String BuscarMarcaModelo(String modeloomarca) {
+        String resultado = "";
         for(Dispositivo dispositivo : this.dispositivos) {
             if (dispositivo.marca.equalsIgnoreCase(modeloomarca) || dispositivo.modelo.equalsIgnoreCase(modeloomarca)) {
-                System.out.println("Precio: " + dispositivo.CalcularPrecio());
+                resultado += "Precio: " + dispositivo.CalcularPrecio() + "\n";
             }
         }
-
+        return resultado;
     }
 
-    public void ListaOrdenada() {
+    public String ListaOrdenada() {
         this.dispositivos.sort(Comparator.comparing(Dispositivo::getStock));
-
+        String resultado = "";
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
             for(Dispositivo dispositivo : this.dispositivos.reversed()) {
-                System.out.println(dispositivo.marca + " Stock: " + dispositivo.stock);
+                resultado += dispositivo.marca + " Stock: " + dispositivo.stock + "\n";
             }
         }
-
+        return resultado;
     }
 
     public void PromocionLaptops() {

@@ -6,10 +6,18 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.examenmovil.Clases.Controller;
+import com.example.examenmovil.Clases.Dispositivo;
+import com.example.examenmovil.Clases.SingletonController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,13 +33,33 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button AgregarLaptop = findViewById(R.id.BtnLaptop);
+        Button mostrarInfo = findViewById(R.id.MostrarInfo);
+
+        List<Dispositivo> Dispositivos = new ArrayList<>();
+        Controller controller = SingletonController.getinstance();
+        controller.CrearDispositivos();
+
 
         AgregarLaptop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, com.example.examenmovil.AgregarLaptop.class);
                 startActivity(intent);
+
+            }
+        });
+        mostrarInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("informacion")
+                        .setMessage(controller.PrecioDeTodo())
+                        .setPositiveButton("ok",null);
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
     }
+
+
 }
